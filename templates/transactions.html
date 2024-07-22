@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin.css')}}">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/script.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.5.1/swiper-bundle.min.js"
+            integrity="sha512-YMl3I1c0sYXM9bjs6zBY8j+y4gHtUbwn0gUkLg/CgOM0VhYBN8xXFuT59tdfObECbIOlN63L3Djmi0b1eQtnoQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <section class="container">
+
+       <div id="sidebar" class="sidebar">
+            <nav class="navbar">
+            <h2>Admin</h2>
+            <a href="{{url_for('admin')}}">Products</a>
+            <a href="{{url_for('users_page')}}">Users</a>
+            <a href="{{url_for('tran_page')}}">Transaction</a>
+
+            <a href="{{url_for('home')}}" class="logout">Log out</a>
+            </nav>
+        </div>
+
+        <div id= "users-con" class="users-con">
+            <div class="Sales">
+                 <div id="past-sales" class="sales">
+                    <h3>{{past}}</h3>
+                     <p>Past Sales</p>
+                 </div>
+
+                 <div id="present-sales" class="sales">
+                     <h3>{{present}}</h3>
+                     <p>Present Sales</p>
+                 </div>
+                 <div id="total-sales" class="sales" >
+                     <h3>{{total}}</h3>
+                     <p>Total Sales</p>
+                 </div>
+             </div>
+            <div class="users">
+                <div class="product-title">
+                <h2>Transactions</h2>
+            </div>
+
+             <div>
+                  <table class="table-of-users">
+                    <tr class="head-row">
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>User ID</th>
+                    </tr>
+                    {%for tran in trans%}
+                        <tr class="data-row">
+                            <td>{{tran.get('name')}}</td>
+                            <td>{{tran.get('price')}} php</td>
+                            <td>{{tran.get('date')}}</td>
+                            <td>{{tran.get('buyer_id')}}</td>
+                        </tr>
+                    {%endfor%}
+
+                </table>
+             </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

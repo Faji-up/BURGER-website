@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/script.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.5.1/swiper-bundle.min.js"
+            integrity="sha512-YMl3I1c0sYXM9bjs6zBY8j+y4gHtUbwn0gUkLg/CgOM0VhYBN8xXFuT59tdfObECbIOlN63L3Djmi0b1eQtnoQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+<section class="section-1" id="section-1">
+    <header class='header'>
+        <div>
+            <img class='baga-logo'
+                 src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/358151838_118256511320933_4502904254324235236_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGwWs6aD99e4qPmGTdrFCdOlIJ_YLYWJYOUgn9gthYlgxZ3x12ka-Ss-TS34VXTDSK-8FvuLmX67vuI77WZuTey&_nc_ohc=SV-gysrVgoAAX8vp0SY&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&oh=00_AfCAUAob7jijEmJNytzVOnzxRxbd_JlgF1cTZF5hQIaWZw&oe=65D2EB94">
+            <a href='#' class='logo'>Baga Burger</a>
+        </div>
+        <div>
+            <nav class="navbar">
+                <a href='#section-1'>Home</a>
+                <a href='#section-2'>Feautures</a>
+                <a href='#section-3'>Products</a>
+            </nav>
+        </div>
+        <div class='icons'>
+            <div id="menu-btnC">
+                <button id='menu-btn' class='fas fa-bars' onclick="toggleSidebar()"></button>
+            </div>
+            <div class='fas fa-shopping-cart' id='cart-btn' onclick="toggleCart()"></div>
+            <div class='fas fa-user' id='login-btn' onclick="toggleUserSidebar()"></div>
+        </div>
+
+        <div id="sidebar" class="sidebar">
+            <p class="det">{{ current_user.name }}</p>
+            <p class="det">{{ current_user.email }}</p>
+            <br>
+            <a href="#section-1">Home</a>
+            <a href="#section-2">Features</a>
+            <a href="#section-3">Products</a>
+            <div id="user-sidebar-2">
+            <a  href="{{url_for('login')}}">Log out</a>
+        </div>
+        </div>
+        <div id="user-sidebar">
+            <button class="back">back</button>
+            <p>Name: {{ current_user.name }}</p>
+            <p>Email: {{ current_user.email }}</p>
+            <button onclick="{{url_for('login')}}">Log Out</button>
+        </div>
+       <div id="cart" class="cart">
+    <button id="bck-btn" onclick="toggleCart()">Back</button>
+    <h3>Your Cart</h3>
+    <div class="cart-items">
+        {% for c in get_tran %}
+            {% if current_user.get_id() == c[4] %}
+                <div class="cart-item">
+                    <h4>{{ c[1] }}</h4>
+                    <p>{{ c[2] }}</p>
+                    <input type="button" value="Delete" onclick="deleteItem({{c[0]}})">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+    </header>
+    <div class="center-box">
+        <div class="center-text">
+            <h2>Baga Burger</h2>
+            <p class="moto">Not Fried but Grilled!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad repellat temporibus tenetur unde, ut
+                voluptate? Animi, necessitatibus?</p>
+        </div>
+        <div class="burgers">
+            <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/412157575_216954984784418_5386567785893500611_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=dd5e9f&_nc_eui2=AeE_d1dac6VnGKcigNnywhTBqYbIv3xOBRCphsi_fE4FEPGs-oe_59zJqLz4RzNM1k__ZUkcDdpGveIEZLgmGT_4&_nc_ohc=-ep0HGSTlWQAX8xmhqn&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&oh=00_AfBgohANJV6RVUTJ3IFDtq55Oc1SoZdtpzBcdLRE5Hvsqg&oe=65D4FF6E">
+        </div>
+    </div>
+</section>
+
+<section class="section-2" id="section-2">
+    <div class="sec-title">
+        <h2>Feautures</h2>
+    </div>
+    <div class="fea-img-con" style="max-width:100%">
+        {% for item in items %}
+        <img class="fea-img" src="{{ item }}">
+        {% endfor %}
+    </div>
+</section>
+ <section class="section-3" id="section-3">
+        <div class="sec-title">
+            <h2>Products</h2>
+        </div>
+        <div class="products-container">
+            {% for prod in products %}
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="{{prod.get('image')}}" alt="">
+                </div>
+                <div class="product-details">
+                    <h3>{{prod.get('name')}}</h3>
+                    <p>{{prod.get('price')}}</p>
+                    <p>{{prod.get('description')}}</p>
+                </div>
+                <div class="product-actions">
+                    <input type="text" name="name" value="{{prod.get('name')}}" id="prod-name">
+                    <input type="text" name="price" value="{{prod.get('price')}}" id="prod-price">
+                    <input type="button" id="buy" placeholder="Buy" value="Buy" onclick="buyItem('{{prod.get('name')}}', '{{prod.get('price')}}')">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2024 Baga Burger All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+<script>
+    function deleteItem(buyer_id) {
+        fetch('/delete_item/' + buyer_id, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Item deleted successfully');
+            } else {
+                alert('Failed to delete item');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to delete item');
+        });
+    }
+
+    function toggleUserSidebar() {
+        var sidebar = document.getElementById('user-sidebar');
+
+        sidebar.classList.toggle('show');
+
+
+    }
+
+    function buyItem(prod, price) {
+        fetch('/buy/' + prod + '/' + price, {
+            method: 'POST',
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Item Buy successfully');
+            } else {
+                alert('Buy');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to buy item');
+        });
+    }
+
+    function logout() {
+        // Implement your logout functionality here
+        alert('Logout');
+    }
+</script>
+
+</body>
+</html>

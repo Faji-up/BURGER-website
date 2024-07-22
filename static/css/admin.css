@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    font-family:'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    border:none;
+    text-decoration:none;
+    text-transform:capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+    scroll-padding-top:7rem;
+}
+
+body{
+    background:#eee;
+    height:100%;
+
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+.icons{
+
+}
+#menu-btnC {
+    display: none; /* Initially hide the menu button container */
+}
+
+#menu-btnC #menu-btn {
+    display: block; /* Show the menu button */
+}
+
+#menu-btnC #back-btn {
+    display: none; /* Initially hide the back button */
+}
+#sidebar {
+    width: 100px;
+    background-color: #ff7800;
+    color: #fff;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+#sidebar:hover{
+    width:117px;
+}
+.sidebar .navbar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar .navbar a {
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.products {
+    margin-left: 100px; /* adjust to the width of the sidebar */
+    padding: 20px;
+    width: calc(100% - 100px); /* subtracting the width of the sidebar */
+
+}
+
+.product {
+    display: flex;
+
+    margin-bottom: 20px;
+}
+
+.product img {
+    width: 100px; /* adjust image width */
+    height: auto;
+    margin-right: 20px;
+}
+
+.product-title {
+    margin-bottom: 20px;
+}
+
+
+#users-con {
+    margin-left: 100px; /* Adjust to match the width of the sidebar */
+    padding: 20px;
+    width: calc(100% - 100px); /* Subtracting the width of the sidebar */
+}
+
+.users-con {
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+}
+
+.users {
+    width: 100%; /* Adjust width as needed */
+}
+
+.table-of-users {
+    width: 100%;
+}
+.head-row th{
+    font-size:1.3rem;
+
+}
+.data-row td{
+    font-size: 1.2rem;
+}
+.head-row th,
+.data-row td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Add border to separate rows */
+}
+
+
+.sidebar .navbar h2{
+    font-size:1.5rem;
+    margin-left:.9rem;
+
+ }
+
+@media screen and (max-width: 768px) {
+    .container #sidebar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        bottom:0;
+        top:0;
+        flex-wrap:wrap;
+        width:100%;
+        height:4rem;
+        position:relative;
+        position:sticky;
+        vertical-align:top;
+    }
+
+.sidebar .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:0;
+    width:100%;
+
+}
+ .sidebar .navbar h2{
+    font-size:1.5rem;
+    margin-top:.5rem;
+    margin-right:1.2rem;
+    margin-left:0;
+ }
+.sidebar .navbar a {
+    text-decoration: none;
+    color: #fff;
+    margin-left:.2rem;
+    margin-right:.2rem;
+    font-size:1.2rem;
+}
+.sidebar .navbar .logout{
+    display:flex;
+    justify-content:flex-end;
+}
+
+
+    .Sales{
+    position:fixed;
+    }
+
+    .container {
+        flex-direction: column; /* Stack sidebar on top of the content */
+    }
+
+    .products {
+        margin-left: 0; /* Remove margin to center content on smaller screens */
+        padding: 20px;
+        width: 100%; /* Occupy full width of the screen */
+    }
+
+    .icons {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+
+    #users-con {
+    margin-left: 0; /* Remove margin to center content on smaller screens */
+    padding: 20px;
+    width: 100%; /* Occupy full width of the page */
+}
+
+.users-con {
+    justify-content: center; /* Center content on smaller screens */
+}
+
+.users {
+    width: 100%; /* Adjust width of the users section to occupy full width */
+    
+
+}
+
+.table-of-users {
+    width: 100%; /* Occupy full width of the container */
+
+}
+
+    .head-row th{
+        padding: 8px; /* Adjust padding for smaller screens */
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+    .data-row td {
+        padding: 8px; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+}
+
+
+.Sales{
+    margin-right:4rem;
+    position: sticky;
+    height:10px;
+    top: 0;
+    left:0;
+}
+.sales{
+    margin-bottom: 3rem;
+}
